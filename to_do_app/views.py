@@ -17,11 +17,11 @@ def home(request):
 def add_search(request):
     now = timezone.now()
     content = request.POST["input"]
-    if content:
-        created_obj = Todo.objects.create(added_date=now,text=content)
-    else:
-        created_obj = Todo.objects.create(added_date=now, text="Not Set")
-    print(created_obj)
+    desc = request.POST["desc"]
+    if content == "":
+        return HttpResponseRedirect("/")
+    created_obj = Todo.objects.create(
+        added_date=now, text=content, description=desc)
     stuff_for_frontend = Todo.objects.all().order_by("-added_date")
     return HttpResponseRedirect("/")
 
