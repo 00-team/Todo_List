@@ -22,5 +22,6 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include("to_do_app.urls")),
+    path("", include("react.urls")),
+    path("api/", include("to_do_app.urls")),
 ]
