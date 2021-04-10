@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "to_do_app",
+    "to_do_app.apps.ToDoAppConfig",
+    "react.apps.ReactConfig"
 ]
 
 MIDDLEWARE = [
@@ -123,5 +124,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static"
+    BASE_DIR / "static",
+    BASE_DIR / "react/static/"
 ]
