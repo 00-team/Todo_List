@@ -1,13 +1,193 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*:focus, *:active {
+    outline: none;
+}
+
+body {
+    background-image: url(bg.png);
+    color: #FFF;
+    font-family: 'New Tegomin', sans-serif;
+}
+
+ul {
+    list-style: none;
+}
+
+::-webkit-scrollbar {width: 8px;}
+::-webkit-scrollbar-track {background-color: transparent;}
+::-webkit-scrollbar-thumb {background-color: #FFD600AA;border-radius: 10px;}
+::-webkit-scrollbar-thumb:hover , ::-webkit-scrollbar-thumb:active {background-color: #FFD600;}
+
+
+.app {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: grid;
+    
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "todos cev";
+}
+
+.app h2 {
+    text-align: center;
+    font-size: 30px;
+}
+
+.app .todos {
+    max-height: 100vh;
+    min-height: 100vh;
+    height: 100vh;
+    overflow-y: scroll;
+    padding: 10px;
+    grid-area: todos;
+}
+
+.app .todos li {
+    width: 100%;
+    height: 50px;
+    border: 2px solid #FFD600;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    margin: 10px 0;
+    position: relative;
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.app .todos li span {
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    user-select: none;
+}
+
+.app .todos li button {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #e20337c2;
+    border-radius: 10px;
+    position: absolute;
+    right: 15px;
+    background-color: transparent;
+    color: #E20338;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app .cev-todo {
+    max-height: 100vh;
+    min-height: 100vh;
+    height: 100vh;
+    overflow-y: scroll;
+    padding: 10px;
+    grid-area: cev;
+}
+
+
+.app .cev-todo div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.app .cev-todo span {
+    font-size: 25px;
+    text-transform: capitalize  ;
+}
+
+.app .cev-todo input, textarea {
+    border: 2px solid #51EAFF;
+    border-radius: 7px;
+    width: 60%;
+    background: transparent;
+    color: #FFF;
+    padding: 5px;
+    font-size: 18px;
+    font-family: sans-serif;
+    margin-left: 10px;
+}
+
+.app .cev-todo input {
+    height: 30px;
+}
+
+.app .cev-todo textarea {
+    height: 200px;
+    resize: none;
+}
+
+.app .cev-todo button {
+    display: block;
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+    border: 2px solid #5BFF62;
+    border-radius: 10px;
+    background-color: transparent;
+    color: #5BFF62;
+    cursor: pointer;
+    margin: 40px 10px 0;
+}
+
+.app .cev-todo button.checkbox {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #51EAFF;
+}
+
+.app .cev-todo button.checkbox.checked {
+    background-color: #51EAFF;
+}
+
+
+/* 
+::-webkit-scrollbar {width: 7px;}
+::-webkit-scrollbar-track {background-color: transparent;}
+::-webkit-scrollbar-thumb {background-color: #0351C1;border-radius: 4px;border-bottom-left-radius: 0;border-top-left-radius: 0;}
+::-webkit-scrollbar-thumb:hover , ::-webkit-scrollbar-thumb:active {background-color: #0351C1;}
+*/
+
+
+@media (max-width: 600px) {
+    .app {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas:
+        "todos"
+        "cev";
+    }
+
+    .app .cev-todo {
+        max-height: 50vh;
+        min-height: 50vh;
+        height: 50vh;
+    }
+    .app .todos {
+        max-height: 50vh;
+        min-height: 50vh;
+        height: 50vh;
+    }
+
+    .app .cev-todo span {
+        font-size: 20px;
+    }
 }
