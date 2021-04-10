@@ -1,32 +1,24 @@
 import Todos from "./components/Todos"
 import Todo from "./components/Todo"
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 function App() {
     const [thetodo, setTheTodo] = useState({id: -1, title: "", description: "", important: false})
 
-    const [todos_list, setTodo] = useState([
-        {
-            id: 1,
-            title: "todo title 1",
-            description: "todo description 1",
-            important: false
-        },
-        {
-            id: 2,
-            title: "todo title 2",
-            description: "todo description 2",
-            important: true
-        },
-        {
-            id: 3,
-            title: "todo title 3",
-            description: "todo description 3",
-            important: false
+    const [todos_list, setTodo] = useState([])
+
+    useEffect(() => {
+        const fetchTodos = async () => {
+            const res = await fetch("http://localhost:8000/gats")
+            const data = await res.json()
+
+            console.log(data);
         }
-    ])
+
+        fetchTodos()
+    })
 
     const deleteTodo = (id) => {
         setTodo(todos_list.filter((todo) => todo.id !== id))
